@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private NavMeshAgent ennemiAgent;
+
+    private void Awake()
+    {
+        ennemiAgent = GetComponent<NavMeshAgent>();
+    }
+
     void Start()
     {
         
@@ -13,6 +20,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ennemiAgent.destination = Objectif.targetPos;
     }
 }
