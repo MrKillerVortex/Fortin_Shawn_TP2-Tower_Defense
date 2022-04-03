@@ -3,7 +3,9 @@ using System.Collections;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform ennemiPrefab;
+    public Transform ennemiPrefab1;
+    public Transform ennemiPrefab2;
+    public Transform ennemiPrefab3;
     public Transform spawnPoint;
 
     public float tempsPourLesWaves = 5f;
@@ -28,14 +30,27 @@ public class WaveSpawner : MonoBehaviour
 
         for (int i = 0; i < waveNombre; i++)
         {
-            ApparaitreEnnemi();
+            ApparaitreEnnemi1();
+            ApparaitreEnnemi2();
+            ApparaitreEnnemi3();
             yield return new WaitForSeconds(0.5f);
         }
 
     }
 
-    void ApparaitreEnnemi()
+    void ApparaitreEnnemi1()
     {
-        Instantiate(ennemiPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(ennemiPrefab1, spawnPoint.position, spawnPoint.rotation);
     }
+
+    void ApparaitreEnnemi2()
+    {
+        Instantiate(ennemiPrefab2, spawnPoint.position, spawnPoint.rotation);
+    }
+
+    void ApparaitreEnnemi3()
+    {
+        Instantiate(ennemiPrefab3, spawnPoint.position, spawnPoint.rotation);
+    }
+
 }
