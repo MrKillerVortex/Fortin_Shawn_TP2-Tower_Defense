@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 361301703752491037}
   - component: {fileID: 361301703752491038}
   - component: {fileID: 361301703752491036}
-  - component: {fileID: 361301703752491032}
+  - component: {fileID: -7839895831242403463}
   m_Layer: 0
   m_Name: nightshade
   m_TagString: Enemy
@@ -330,7 +330,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 20
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -340,9 +340,9 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
---- !u!114 &361301703752491032
+--- !u!114 &-7839895831242403463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

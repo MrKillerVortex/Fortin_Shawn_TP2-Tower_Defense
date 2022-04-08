@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class WaveSpawner : MonoBehaviour
         }
 
         cooldown -= Time.deltaTime;
+
+
     }
 
     IEnumerator ApparaitreWaves()

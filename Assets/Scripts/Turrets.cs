@@ -61,7 +61,7 @@ public class Turrets : MonoBehaviour
         Vector3 direct = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direct);
         Vector3 rotation = Quaternion.Lerp(rotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        rotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        rotate.rotation = Quaternion.Euler(270f, rotation.y, 0f);
 
         if (fireCountdown <= 0f)
         {

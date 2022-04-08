@@ -22,4 +22,17 @@ public class Enemy : MonoBehaviour
     {
         ennemiAgent.destination = Objectif.targetPos;
     }
+
+    public float getActualRemainingDistanceEstimate(NavMeshAgent agent)
+    {
+        Vector3[] pc = agent.path.corners;
+        float totalDistance = 0f;
+        foreach (Vector3 corner in pc)
+        {
+            totalDistance += corner.magnitude;
+        }
+
+        return totalDistance;
+
+    }
 }
