@@ -7,6 +7,10 @@ public class Enemy : MonoBehaviour
 {
     private NavMeshAgent ennemiAgent;
 
+    public float health = 100;
+
+    public int moneyGame = 50;
+
     private void Awake()
     {
         ennemiAgent = GetComponent<NavMeshAgent>();
@@ -17,22 +21,43 @@ public class Enemy : MonoBehaviour
         
     }
 
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        PlayerStats.Money += moneyGame;
+        PlayerStats.Mort++;
+        Destroy(gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
         ennemiAgent.destination = Objectif.targetPos;
+        
     }
 
-    public float getActualRemainingDistanceEstimate(NavMeshAgent agent)
+    private void OnTriggerEnter(Collider collider)
     {
-        Vector3[] pc = agent.path.corners;
-        float totalDistance = 0f;
-        foreach (Vector3 corner in pc)
-        {
-            totalDistance += corner.magnitude;
-        }
-
-        return totalDistance;
-
+        End();
     }
+
+    public void End()
+    {
+        // Dire au game manager que le chateau perd des pv
+        PlayerStats.Lives--;
+
+        // Detruire l'ennemi
+        Destroy(gameObject);
+    }
+
+
 }

@@ -58,10 +58,7 @@ public class Turrets : MonoBehaviour
             return;
         }
 
-        Vector3 direct = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(direct);
-        Vector3 rotation = Quaternion.Lerp(rotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        rotate.rotation = Quaternion.Euler(270f, rotation.y, 0f);
+        LockOnTarget();
 
         if (fireCountdown <= 0f)
         {
@@ -71,6 +68,14 @@ public class Turrets : MonoBehaviour
 
         fireCountdown -= Time.deltaTime;
 
+    }
+
+    void LockOnTarget()
+    {
+        Vector3 direct = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direct);
+        Vector3 rotation = Quaternion.Lerp(rotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        rotate.rotation = Quaternion.Euler(270f, rotation.y, 0f);
     }
 
     void Shoot()

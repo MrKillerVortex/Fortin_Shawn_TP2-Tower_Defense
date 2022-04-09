@@ -30,13 +30,15 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator ApparaitreWaves()
     {
         waveNombre++;
+        PlayerStats.Rounds++;
+        PlayerStats.Vague++;
 
         for (int i = 0; i < waveNombre; i++)
         {
             ApparaitreEnnemi1();
             ApparaitreEnnemi2();
             ApparaitreEnnemi3();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
         }
 
     }

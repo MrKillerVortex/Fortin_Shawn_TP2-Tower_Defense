@@ -47,7 +47,7 @@ public class Timer : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            string timePlayingStr = "Time: " + timePlaying.ToString("mm':'ss'.'ff");
+            string timePlayingStr = "Temps: " + timePlaying.ToString("mm':'ss'.'ff");
             timer.text = timePlayingStr;
 
             yield return null;
