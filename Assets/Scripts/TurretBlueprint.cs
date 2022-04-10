@@ -8,4 +8,10 @@ public class TurretBlueprint
     public GameObject prefab;
     public int cost;
 
+    public int GetSellAmount()
+    {
+        Debug.Log((cost).ToString());
+        return cost / 2;
+    }
+
 }

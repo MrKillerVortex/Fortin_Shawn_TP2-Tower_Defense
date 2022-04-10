@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Toggle()
     {
+        //Activer le pause
         ui.SetActive(!ui.activeSelf);
 
         if (ui.activeSelf)

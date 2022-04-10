@@ -9,7 +9,7 @@ public class Node : MonoBehaviour
     public Vector3 positionOffset;
 
     public GameObject turret;
-    
+    public TurretBlueprint turretBlueprint;
 
     private Renderer rend;
     private Color startColor;
@@ -23,22 +23,35 @@ public class Node : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + positionOffset;
+    }
 
     void OnMouseDown()
     {
+        if (turret != null)
+        {
+            buildManager.SelectNodeToSell(this);
+            return;
+        }
+
         if (!buildManager.CanBuild)
         {
             return;
         }
 
-        if (turret != null)
-        {
-            Debug.Log("Can't build there! - TODO: Display on screen.");
-            return;
-        }
-
         buildManager.SelectNodeToBuild(this);
         buildManager.BuildTurretOn();
+    }
+
+    public void SellTurret()
+    {
+        Debug.Log((PlayerStats.Money).ToString());
+        PlayerStats.Money += turretBlueprint.GetSellAmount();
+        Debug.Log((PlayerStats.Money).ToString());
+        Destroy(turret);
+        turretBlueprint = null;
     }
 
     void OnMouseEnter()

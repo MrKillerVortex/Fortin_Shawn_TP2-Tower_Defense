@@ -16,19 +16,22 @@ public class Shop : MonoBehaviour
     }
     public void SelectCannonTurret()
     {
-        Debug.Log("Purchase Cannon Turret");
+        //Sélectionner la tourelle à construire
+        Debug.Log("Achat Cannon Turret");
         buildManager.SelectTurretToBuild(cannonTurret);
     }
 
     public void SelectGunTurret()
     {
-        Debug.Log("Purchase Gun Turret");
+        //Sélectionner la tourelle à construire
+        Debug.Log("Achat Gun Turret");
         buildManager.SelectTurretToBuild(gunTurret);
     }
 
     public void SelectFreezeTurret()
     {
-        Debug.Log("Purchase Freeze Turret");
+        //Sélectionner la tourelle à construire
+        Debug.Log("Achat Freeze Turret");
         buildManager.SelectTurretToBuild(freezeTurret);
     }
 }

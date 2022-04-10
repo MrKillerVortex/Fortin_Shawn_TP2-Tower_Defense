@@ -10,6 +10,7 @@ public class MoneyUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Montre le nombre d'argent dans le text
         moneyText.text = "$" + PlayerStats.Money.ToString();
     }
 }

@@ -8,6 +8,7 @@ public class Continue : MonoBehaviour
     }
     public void ToggleResume()
     {
+        //Appui sur le bouton et refait fonctionner le temps pour continuer la partie
         Time.timeScale = Mathf.Approximately(Time.timeScale, 0.0f) ? 1.0f : 0.0f;
     }
 }

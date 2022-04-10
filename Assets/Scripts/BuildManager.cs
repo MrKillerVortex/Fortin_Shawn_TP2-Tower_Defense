@@ -12,7 +12,7 @@ public class BuildManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("More than one builmanager in scene");
+            Debug.LogError("Il y a plus d'une scène dans le Main");
             return;
         }
         instance = this;
@@ -25,6 +25,8 @@ public class BuildManager : MonoBehaviour
 
 
     private TurretBlueprint turretToBuild;
+    private Node selectorNode;
+    public NodeUI nodeUI;
 
     public bool CanBuild { get { return turretToBuild != null; } }
     public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
@@ -33,7 +35,7 @@ public class BuildManager : MonoBehaviour
     {
         if (PlayerStats.Money < turretToBuild.cost)
         {
-            Debug.Log("Not enough money");
+            Debug.Log("Pas assez d'argent");
             return;
         }
 
@@ -43,12 +45,30 @@ public class BuildManager : MonoBehaviour
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, nodeInstance.transform.position, nodeInstance.transform.rotation);
         nodeInstance.turret = turret;
 
-        Debug.Log("Turret build ! Money left : " + PlayerStats.Money);
+        Debug.Log("Tourelle construite ! Argent restant : " + PlayerStats.Money);
+    }
+    public void SelectNodeToSell(Node node)
+    {
+        if (selectorNode == node)
+        {
+            DeselectionnerNode();
+            return;
+        }
+        selectorNode = node;
+        turretToBuild = null;
+        nodeUI.SetTarget(node);
     }
 
+    public void DeselectionnerNode()
+    {
+        selectorNode = null;
+        nodeUI.Disparaitre();
+    }
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
+
         turretToBuild = turret;
+        DeselectionnerNode();
     }
     public void SelectNodeToBuild(Node p_nodeInstance)
     {

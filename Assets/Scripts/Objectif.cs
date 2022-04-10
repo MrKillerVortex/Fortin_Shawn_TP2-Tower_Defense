@@ -9,6 +9,7 @@ public class Objectif : MonoBehaviour
 
     void Start()
     {
+        //Donne la position du chateau pour que les ennemis se dirige en direction de celui-ci
         targetPos = GetComponent<Transform>().position;
     }
 
